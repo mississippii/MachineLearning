@@ -6,17 +6,17 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
-file_path = "/home/veer/Downloads/Dataset/iris/iris.data"
+file_path = "/home/veer/Downloads/iris/iris.data"
 column_names = ["sepal_length", "sepal_width", "petal_length", "petal_width", "species"]
 
 data = pd.read_csv(file_path, header=None, names=column_names)
 
 print(data.head())
 
-plt.scatter(data['sepal_length'],data['sepal_width'])
-plt.xlabel('room Number')
-plt.ylabel('median')
-plt.title('Data set')
+plt.scatter(data['sepal_length'], data['sepal_width'])
+plt.xlabel('Sepal Length')
+plt.ylabel('Sepal Width')
+plt.title('Sepal Length vs Sepal Width')
 plt.show()
 
 x = data[['sepal_length']]
@@ -36,11 +36,11 @@ y_pred = model.predict(X_test)
 
 plt.scatter(X_test, y_test, color='blue', label='Actual Data')
 plt.plot(X_test, y_pred, color='red', label='Regression Line')
-plt.xlabel('sepal_length (Number of Rooms)')
-plt.ylabel('sepal_width (Median Value)')
+plt.xlabel('Sepal Length')
+plt.ylabel('Sepal Width')
 plt.title('Simple Linear Regression')
 plt.legend()
 plt.show()
 
-pre_y = model.predict([[7.98]])
-print(f"Predict value (y): {pre_y}")
+pre_y = model.predict(pd.DataFrame([[7.98]], columns=['sepal_length']))
+print(f"Predict value (sepal_width) for sepal_length = 7.98: {pre_y}")
