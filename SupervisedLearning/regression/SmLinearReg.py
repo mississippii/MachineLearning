@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
-file_path = "/home/veer/Downloads/others/iris.csv"
+file_path = "/home/veer/Downloads/Dataset/iris.csv"
 data = pd.read_csv(file_path, header=0)
 
 print(data.head())
