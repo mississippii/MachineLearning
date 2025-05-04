@@ -1,11 +1,9 @@
-import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
+import pandas as pd
 from sklearn import metrics
+from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
-from sklearn.impute import SimpleImputer
-
 
 # Data loading
 dat_path = "/home/veer/Downloads/Dataset/diabetes1.csv"
@@ -44,6 +42,7 @@ print("# rows missing insulin: {0}".format(len(data_frame.loc[data_frame['insuli
 print("# rows missing bmi: {0}".format(len(data_frame.loc[data_frame['bmi'] == 0])))
 print("# rows missing diab_pred: {0}".format(len(data_frame.loc[data_frame['diab_pred'] == 0])))
 print("# rows missing age: {0}".format(len(data_frame.loc[data_frame['age'] == 0])))
+
 
 fill_0 = SimpleImputer(missing_values=0, strategy='mean')
 X_train = fill_0.fit_transform(X_train)
