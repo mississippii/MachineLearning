@@ -14,28 +14,18 @@ plt.ylabel('Sepal Width')
 plt.title('Sepal Length vs Sepal Width')
 plt.show()
 
-x = data[['sepal_length']]
-y = data[['sepal_width']]
+x = data[str('sepal_length')]
+y = data[str('sepal_width')]
+# theta_0= 1.5;
+# theta_1= 0.5;
+# h = theta_0 + theta_1 * x;
+re=0;
+m = len(x)
+for i in range(m):
+    a=0.5 * x[i] + 1.5;
+    a= y[i] - a;
+    a=a**2;
+    re=re+a;
 
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
-
-model = LinearRegression()
-model.fit(X_train,y_train)
-
-slope = model.coef_[0]
-intercept = model.intercept_
-print(f"Slope (m): {slope}")
-print(f"Intercept (c): {intercept}")
-
-y_pred = model.predict(X_test)
-
-plt.scatter(X_test, y_test, color='blue', label='Actual Data')
-plt.plot(X_test, y_pred, color='red', label='Regression Line')
-plt.xlabel('Sepal Length')
-plt.ylabel('Sepal Width')
-plt.title('Simple Linear Regression')
-plt.legend()
-plt.show()
-
-pre_y = model.predict(pd.DataFrame([[7.98]], columns=['sepal_length']))
-print(f"Predict value (sepal_width) for sepal_length = 7.98: {pre_y}")
+cost = re/(2*m);
+print("Cost: ", cost)
